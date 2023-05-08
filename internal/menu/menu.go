@@ -5,7 +5,11 @@ import (
 	"telegram_bot/internal/messages"
 )
 
-func GetMenu(update common.Update) {
+func Command(update common.Update) {
+	command(update)
+}
+
+func command(update common.Update) {
 	if update.Message != nil && update.Message.Text == "/keyboard" {
 		keyboard := [][]common.InlineKeyboardButton{
 			{
@@ -119,5 +123,21 @@ func GetMenu(update common.Update) {
 			messages.DeleteMessage(chatID, messageID)
 			messages.SendMessage(chatID, "Привет ты выбрал 2", nil)
 		}
+	} else {
+		startedMessage(update)
 	}
+}
+
+func startedMessage(update common.Update) {
+	if update.Message != nil && (update.Message.Text == "/start" || update.Message.Text == "/help") {
+		message := "Привет\nЧтобы получить клавиатуру введите команду /keyboard"
+		messages.SendMessage(update.Message.Chat.ID, message, nil)
+	} else {
+		badMessage(update)
+	}
+}
+
+func badMessage(update common.Update) {
+	message := "я тебя не понимаю введи существующую команду /help или /keyboard"
+	messages.SendMessage(update.Message.Chat.ID, message, nil)
 }

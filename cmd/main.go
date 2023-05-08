@@ -16,7 +16,7 @@ func main() {
 		}
 		for _, update := range thisUpdates {
 			lastUpdateID = update.UpdateID + 1
-			menu.GetMenu(update)
+			menu.Command(update)
 		}
 	}
 }
