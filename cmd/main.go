@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"telegram_bot/internal/menu"
+	"telegram_bot/internal/commands"
 	"telegram_bot/internal/updates"
 )
 
@@ -16,7 +16,7 @@ func main() {
 		}
 		for _, update := range thisUpdates {
 			lastUpdateID = update.UpdateID + 1
-			menu.Command(update)
+			commands.Command(update)
 		}
 	}
 }

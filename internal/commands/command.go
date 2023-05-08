@@ -1,4 +1,4 @@
-package menu
+package commands
 
 import (
 	"telegram_bot/internal/common"
