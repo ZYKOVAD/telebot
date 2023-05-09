@@ -8,7 +8,7 @@ import (
 func Command(update common.Update) {
 	if update.Message != nil && update.Message.Text == "/keyboard" {
 		firstMenu(update)
-	} else if update.Message.Text == "/start" || update.Message.Text == "/help" {
+	} else if update.Message != nil && (update.Message.Text == "/start" || update.Message.Text == "/help") {
 		startedMessage(update)
 	} else if update.CallbackQuery != nil {
 		downKeyboard(update)
