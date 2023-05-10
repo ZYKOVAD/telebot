@@ -12,3 +12,11 @@ func GetToken() string {
 	}
 	return token
 }
+
+func GetOpenWeatherToken() string {
+	token := os.Getenv("OPEN_WEATHER_TOKEN")
+	if token == "" {
+		log.Fatal("no open weather token in env")
+	}
+	return token
+}
